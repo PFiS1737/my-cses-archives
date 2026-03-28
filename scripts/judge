@@ -1,0 +1,89 @@
+#!/usr/bin/env fish
+
+source (status dirname)/utils.fish
+
+function echo_h1
+    set_color blue
+    echo $argv[1]
+    echo (string replace -ar "." "=" $argv[1])
+    set_color normal
+end
+
+function echo_h2
+    set_color green
+    echo $argv[1]
+    set_color normal
+end
+
+function echo_h3
+    set_color yellow
+    echo $argv[1]
+    set_color normal
+end
+
+function echo_error
+    set_color red
+    echo $argv[1]
+    set_color normal
+end
+
+echo_h1 "Building..."
+just build
+or begin
+    echo
+    echo_error "Failed to build the program."
+    return 1
+end
+echo
+
+trap 'rm -f ./src/out.tmp ./src/time' INT TERM EXIT
+
+echo_h1 "Running..."
+
+echo_h2 "Input:"
+cat ./src/in.txt
+
+command time -f "Max memory : %MKB\n      Time : %es" just run <./src/in.txt 2>./src/time >./src/out.tmp
+or begin
+    echo
+    echo_error "Failed to run the program."
+    echo
+    just run <./src/in.txt
+    return 1
+end
+
+# remove trailing space lines
+printf "\n\n" >>./src/out.tmp
+sed -i ':a;$!{N;ba};s/\n*$//' ./src/out.tmp
+
+echo_h2 "Output:"
+showws ./src/out.tmp
+echo
+
+echo_h1 "Judging..."
+
+if cmp -s ./src/out.txt ./src/out.tmp
+    echo_h2 Accepted
+    set_color grey
+    echo "NOTE: No time and memory limits were set, you can check them below."
+    echo
+    cat ./src/time
+    set_color normal
+else
+    echo_error "Wrong Answer"
+    echo
+
+    while read -n 2 -P "Show diff in new window...? (Y/n): " res
+        or return 1
+        switch $res
+            case y Y ''
+                kitty kitten diff ./src/out.txt ./src/out.tmp
+                break
+            case n N
+                return 1
+            case *
+                echo Not valid input
+                continue
+        end
+    end
+end

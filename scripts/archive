@@ -1,0 +1,39 @@
+#!/usr/bin/env fish
+
+if not test -d ./archives
+    mkdir ./archives
+end
+
+read -P "ID: " id
+read -P "Description: " description
+
+set file "./archives/$(test -n "$description"; and printf "%s_%s.cpp" $id $description; or echo $id.cpp)"
+
+set tempfile (mktemp)
+echo "Problem: (editing in \$EDITOR...)"
+$EDITOR $tempfile
+for line in (cat $tempfile)
+    if test -z "$line"
+        echo // >>$file
+        continue
+    end
+    echo "// $line" >>$file
+end
+rm -f $tempfile
+
+echo >>$file
+echo "// Sample Input" >>$file
+for line in (cat ./src/in.txt)
+    echo "// $line" >>$file
+end
+
+echo >>$file
+echo "// Sample Output" >>$file
+for line in (cat ./src/out.txt)
+    echo "// $line" >>$file
+end
+
+echo >>$file
+for line in (cat ./src/main.cpp)
+    echo $line >>$file
+end
