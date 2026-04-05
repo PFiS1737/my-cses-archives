@@ -14,13 +14,13 @@ target("cses", function()
 	set_kind("binary")
 	add_files("src/main.cpp")
 
-	add_cxxflags("-O2", "-Wall", "-Wextra")
+	add_cxxflags("-Wall", "-Wextra")
 
 	add_defines("LOCAL_JUDGE")
 
 	if is_mode("debug") then
 		add_defines("DEBUG")
+	else
+		add_cxxflags("-O2")
 	end
-
-	add_links("m")
 end)
