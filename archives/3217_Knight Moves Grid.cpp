@@ -1,4 +1,5 @@
-// There is a knight on an n \times n chessboard. For each square, print the minimum number of moves the knight needs to do to reach the top-left corner.
+// There is a knight on an n \times n chessboard. For each square, print the minimum
+// number of moves the knight needs to do to reach the top-left corner.
 //
 // Input
 // The only line has an integer n.
@@ -9,6 +10,8 @@
 // Constraints
 //
 // 4 \le n \le 1000
+
+// clang-format off
 
 // Sample Input
 // 8
@@ -22,6 +25,8 @@
 // 3 4 3 4 3 4 5 4
 // 4 3 4 3 4 5 4 5
 // 5 4 5 4 5 4 5 6
+
+// clang-format on
 
 #include <bits/stdc++.h>
 using namespace std;

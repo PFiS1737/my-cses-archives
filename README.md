@@ -4,7 +4,8 @@
 
 ## Requirements
 
-- GNU G++
+- gcc -std=c++17
+- clang-format
 - fish
 - just
 - xmake

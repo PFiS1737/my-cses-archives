@@ -11,11 +11,15 @@
 //
 // 1 \le n \le 10^9
 
+// clang-format off
+
 // Sample Input
 // 395
 
 // Sample Output
 // 97
+
+// clang-format on
 
 #include <bits/stdc++.h>
 using namespace std;

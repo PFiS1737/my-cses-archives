@@ -1,5 +1,6 @@
-// A Gray code is a list of all 2^n bit strings of length n, where any two successive strings differ in exactly one bit (i.e., their Hamming distance is one).
-// Your task is to create a Gray code for a given length n.
+// A Gray code is a list of all 2^n bit strings of length n, where any two successive
+// strings differ in exactly one bit (i.e., their Hamming distance is one). Your task is
+// to create a Gray code for a given length n.
 //
 // Input
 // The only input line has an integer n.
@@ -11,6 +12,8 @@
 //
 // 1 \le n \le 16
 
+// clang-format off
+
 // Sample Input
 // 2
 
@@ -19,6 +22,8 @@
 // 01
 // 11
 // 10
+
+// clang-format on
 
 #include <bits/stdc++.h>
 using namespace std;

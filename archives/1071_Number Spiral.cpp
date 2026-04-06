@@ -1,4 +1,5 @@
-// A number spiral is an infinite grid whose upper-left square has number 1. Here are the first five layers of the spiral:
+// A number spiral is an infinite grid whose upper-left square has number 1. Here are the
+// first five layers of the spiral:
 //
 // Your task is to find out the number in row y and column x.
 //
@@ -14,6 +15,8 @@
 // 1 \le t \le 10^5
 // 1 \le y,x \le 10^9
 
+// clang-format off
+
 // Sample Input
 // 3
 // 2 3
@@ -24,6 +27,8 @@
 // 8
 // 1
 // 15
+
+// clang-format on
 
 #include <bits/stdc++.h>
 using namespace std;

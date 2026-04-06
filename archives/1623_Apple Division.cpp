@@ -1,4 +1,5 @@
-// There are n apples with known weights. Your task is to divide the apples into two groups so that the difference between the weights of the groups is minimal.
+// There are n apples with known weights. Your task is to divide the apples into two
+// groups so that the difference between the weights of the groups is minimal.
 //
 // Input
 // The first input line has an integer n: the number of apples.
@@ -12,12 +13,16 @@
 // 1 \le n \le 20
 // 1 \le p_i \le 10^9
 
+// clang-format off
+
 // Sample Input
 // 5
 // 3 2 7 4 1
 
 // Sample Output
 // 1
+
+// clang-format on
 
 #include <bits/stdc++.h>
 using namespace std;

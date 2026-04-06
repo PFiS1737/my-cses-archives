@@ -10,7 +10,7 @@ set id 0
 if test (count $argv) -eq 0
     set fzf_result (fd . ./archives | fzf --preview-window "right,60%,border-left")
 
-    if test -z $fzf_result
+    if test -z "$fzf_result"
         echo "Error: No file selected."
         return 1
     end
@@ -83,6 +83,7 @@ for line in (cat $file)
     end
 
     if not string match -rq '^$' $line
+        and not string match -rq '^// clang-format on$' $line
         set inner_code 1
     end
 

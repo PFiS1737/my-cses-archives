@@ -1,4 +1,5 @@
-// Your task is to count for k=1,2,\ldots,n the number of ways two knights can be placed on a k \times k chessboard so that they do not attack each other.
+// Your task is to count for k=1,2,\ldots,n the number of ways two knights can be placed
+// on a k \times k chessboard so that they do not attack each other.
 //
 // Input
 // The only input line contains an integer n.
@@ -9,6 +10,8 @@
 // Constraints
 //
 // 1 \le n \le 10000
+
+// clang-format off
 
 // Sample Input
 // 8
@@ -22,6 +25,8 @@
 // 550
 // 1056
 // 1848
+
+// clang-format on
 
 #include <bits/stdc++.h>
 using namespace std;

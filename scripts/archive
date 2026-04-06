@@ -22,6 +22,9 @@ end
 rm -f $tempfile
 
 echo >>$file
+echo "// clang-format off" >>$file
+
+echo >>$file
 echo "// Sample Input" >>$file
 for line in (cat ./src/in.txt)
     echo "// $line" >>$file
@@ -34,6 +37,12 @@ for line in (cat ./src/out.txt)
 end
 
 echo >>$file
+echo "// clang-format on" >>$file
+
+echo >>$file
 for line in (cat ./src/main.cpp)
     echo $line >>$file
 end
+
+echo "Formatting..."
+clang-format -i $file

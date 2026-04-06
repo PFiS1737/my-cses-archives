@@ -3,7 +3,6 @@ ContinuationIndentWidth: 2
 Language: Cpp
 Standard: c++14
 MaxEmptyLinesToKeep: 1
-ReflowComments: Never
 AlignEscapedNewlines: DontAlign
 AllowShortFunctionsOnASingleLine: None
 IndentPPDirectives: AfterHash
