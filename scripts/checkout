@@ -5,44 +5,33 @@ if not test -d ./archives
     return 1
 end
 
-set id 0
-
 if test (count $argv) -eq 0
-    set fzf_result (fd . ./archives | fzf --preview-window "right,60%,border-left")
+    set file (fd --type file . ./archives | fzf --preview-window "right,60%,border-left")
 
-    if test -z "$fzf_result"
+    if test -z "$file"
         echo "Error: No file selected."
         return 1
     end
-
-    set name (basename $fzf_result)
-    set id (string match -r '^[0-9]+' $name)
 else if test (count $argv) -eq 1
-    set id $argv[1]
+    set -l id $argv[1]
+    set -l files (fd --type file --regex "^([0-9]+_)?$id(_.+)?\\.cpp\$" ./archives)
+
+    if test (count $files) -eq 0
+        echo "Error: No files found with id: $id."
+        return 1
+    end
+
+    if test (count $files) -eq 1
+        set file $files[1]
+    else
+        set file (echo $files | string replace -ar " " "\n" | fzf --preview-window "right,60%,border-left")
+    end
 else
     echo "Error: Too many arguments."
     return 1
 end
 
-set files (fd --type file --regex "^$id(_.+)?\\.cpp\$" ./archives)
-
-if test (count $files) -eq 0
-    echo "Error: No files found with id: $id."
-    return 1
-end
-
-set file ''
-
-if test (count $files) -eq 1
-    set file $files[1]
-else
-    set file (echo $files | string replace -ar " " "\n" | fzf --preview-window "right,60%,border-left")
-end
-
-if not test -d ./src
-    mkdir ./src
-end
-
+mkdir -p ./src
 ./scripts/new -yn
 
 set inner_sample_input 0
@@ -92,4 +81,4 @@ for line in (cat $file)
     end
 end
 
-echo "File $file has been checked out to ./src/main.cpp"
+echo "File $(set_color green)$file$(set_color normal) has been checked out to ./src/main.cpp"

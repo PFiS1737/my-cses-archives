@@ -1,13 +1,25 @@
 #!/usr/bin/env fish
 
-if not test -d ./archives
-    mkdir ./archives
+set base "$PWD/archives"
+
+set group $argv[1]
+if test -n "$group"
+    set base "$base/$group"
 end
 
-read -P "ID: " id
-read -P "Description: " description
+mkdir -p "$base"
 
-set file "./archives/$(test -n "$description"; and printf "%s_%s.cpp" $id $description; or echo $id.cpp)"
+set idx (printf "%03d" (math (count $base/*.cpp) + 1))
+
+echo "Index: $idx"
+read -P "ID: " id
+read -P "Name (optional): " name
+
+if test -n "$name"
+    set file (printf "$base/%s_%s_%s.cpp" $idx $id $name)
+else
+    set file (printf "$base/%s_%s.cpp" $idx $id)
+end
 
 set tempfile (mktemp)
 echo "Problem: (editing in \$EDITOR...)"

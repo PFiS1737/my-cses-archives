@@ -23,10 +23,9 @@ just new [-ny]
 # 首次运行需无参数使用 `just` 进行初始化
 just judge
 
-# 归档当前工作区
-# 提问 Description 为会跟在 ID 后面一起组成文件名的短描述
-#      Problem 为具体题干
-just archive
+# 归档当前工作区，group 为归档分组，默认直接放在 ./archives 下
+# 注意空格需要双重转义，如 `just archive 'ABC\ DEF'`
+just archive [group]
 
 # 检出一个归档
 # 不提供 id 则调用 fzf 进行搜索

@@ -26,8 +26,8 @@ judge:
 new *args:
     @./scripts/new {{args}}
 
-archive:
-    @./scripts/archive
+archive group='':
+    @./scripts/archive {{group}}
 
 clean:
     @xmake clean
