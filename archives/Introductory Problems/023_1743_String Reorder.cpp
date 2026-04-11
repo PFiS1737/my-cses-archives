@@ -12,9 +12,9 @@
 //
 // 1 \le n \le 10^6
 
-// Sample Input
 // clang-format off
 
+// Sample Input
 // HATTIVATTI
 
 // Sample Output
