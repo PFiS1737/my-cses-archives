@@ -5,6 +5,7 @@ Standard: c++14
 MaxEmptyLinesToKeep: 1
 AlignEscapedNewlines: DontAlign
 AllowShortFunctionsOnASingleLine: None
+AllowShortLambdasOnASingleLine: None
 IndentPPDirectives: AfterHash
 ColumnLimit: 90
 IndentCaseLabels: true
