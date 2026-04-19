@@ -39,9 +39,11 @@ void solve() {
   int n;
   cin >> n;
 
-  map<int, int> last;
-  int l = 1;
+  // INFO: 另见 013_1141, 求最长子数组长度
+
+  int l = 0;
   ll cnt = 0;
+  map<int, int> last;
 
   // NOTE: 我们计算以每个位置结尾的有效子数组的数量。
   //       这些值的总和就是问题的答案。
@@ -51,8 +53,8 @@ void solve() {
   for (int i = 1; i <= n; i++) {
     int x;
     cin >> x;
-    l = max(l, last[x] + 1);
-    cnt += i - l + 1;
+    l = max(l, last[x]);
+    cnt += i - l;
     last[x] = i;
   }
 

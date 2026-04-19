@@ -48,7 +48,7 @@ void solve() {
   cin >> n >> m;
 
   int x;
-  multiset<int, greater<int>> h;
+  multiset<int> h;
   while (n--) {
     cin >> x;
     h.insert(x);
@@ -57,11 +57,11 @@ void solve() {
   int p;
   while (m--) {
     cin >> p;
-    auto it = h.lower_bound(p);
-    if (it == h.end()) {
+    auto it = h.upper_bound(p);
+    if (it == h.begin()) {
       cout << -1 << endl;
     } else {
-      cout << *it << endl;
+      cout << *--it << endl;
       h.erase(it);
     }
   }

@@ -40,16 +40,18 @@ void solve() {
   int n;
   cin >> n;
 
-  int last = 0;
+  // INFO: 另见 016_3420, 求子数组数量
+
+  int l = 0;
   int ans = 0;
-  map<int, int> t; // 记录每个数上次出现的位置
+  map<int, int> last; // 记录每个数上次出现的位置
 
   for (int i = 1; i <= n; i++) {
     int x;
     cin >> x;
-    last = max(last, t[x]);
-    ans = max(ans, i - last);
-    t[x] = i;
+    l = max(l, last[x]);
+    ans = max(ans, i - l);
+    last[x] = i;
   }
 
   cout << ans << endl;

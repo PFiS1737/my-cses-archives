@@ -51,7 +51,7 @@ void solve() {
   }
 
   ll ans = 1;
-  for (auto &[_, v] : mp) {
+  for (auto [_, v] : mp) {
     ans *= v + 1;
     ans %= M;
   }
