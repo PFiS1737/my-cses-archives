@@ -50,6 +50,8 @@ void solve() {
     cin >> i;
   }
 
+  // 统计它们在 x 个时间单位内能够生产的产品总数。
+  // 如果产品数量至少达到所需数量，则该函数返回 true
   auto check = [&](ll x) {
     ll total = 0;
     for (int i : times) {
@@ -60,6 +62,7 @@ void solve() {
     return false;
   };
 
+  // 我们找到最大时间 k ，使得无法生产出足够的产品。那么 k+1 就是问题的答案。
   ll k = 0;
   for (ll b = 1e18; b >= 1; b /= 2) {
     while (!check(k + b))
