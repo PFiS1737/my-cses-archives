@@ -91,7 +91,7 @@ void solve() {
     cin >> i;
 
   // 坐标压缩
-  vector<int> b = a;
+  vi b = a;
   sort(b.begin(), b.end());
   b.erase(unique(b.begin(), b.end()), b.end());
 

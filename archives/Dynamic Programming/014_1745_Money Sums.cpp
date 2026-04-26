@@ -59,13 +59,15 @@ void solve() {
   const int X = 100 * 1000;
 
   // dp[i] 表示是否可以组合出和为 i 的数
-  vi dp(X + 1, 0);
+  vi dp(X + 1, false);
   dp[0] = true;
 
   while (n--) {
     takei(x);
     for (int i = X; i >= x; i--) {
-      dp[i] = dp[i] || dp[i - x];
+      if (dp[i - x]) {
+        dp[i] = true;
+      }
     }
   }
 
